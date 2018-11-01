@@ -10,5 +10,11 @@
   },
   "reactFunctionComponent": {
     "body": ""
+  },
+  "reactHoc": {
+    "body": "import React from 'react'\nimport PropTypes from 'prop-types'\n\nconst [HOC_NAME] = WrappedComponent => {\n  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />;\n\n  hocComponent.propTypes = {};\n\n  return hocComponent;\n}\n\nexport { [HOC_NAME] };"
+  },
+  "reactHocIndex": {
+    "body": "import { [HOC_NAME] } from './toastify';\nexport { [HOC_NAME] };"
   }
 }
