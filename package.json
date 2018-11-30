@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hmu332233/npm.minung--dev-tools/issues"
   },
-  "homepage": "https://github.com/hmu332233/npm.minung--dev-tools#readme"
+  "homepage": "https://github.com/hmu332233/npm.minung--dev-tools#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
