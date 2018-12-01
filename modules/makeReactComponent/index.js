@@ -8,9 +8,9 @@ module.exports = ({ componentName = 'Component', componentPath = './', component
   const templateCssData = snippets.reactComponentCss.body;
   const templateIndexData = snippets.reactComponentIndex.body;
 
-  const jsxData = templateJsxData.replace(/\[COMPONENT_NAME\]/gi, componentName).replace(/\[CSS_EXTENTION\]/gi, componentCssExtension);
-  const cssData = templateCssData.replace(/\[COMPONENT_NAME\]/gi, componentName);
-  const indexData = templateIndexData.replace(/\[COMPONENT_NAME\]/gi, componentName);
+  const jsxData = templateJsxData.replace(/\[NAME\]/gi, componentName).replace(/\[CSS_EXTENTION\]/gi, componentCssExtension);
+  const cssData = templateCssData.replace(/\[NAME\]/gi, componentName);
+  const indexData = templateIndexData.replace(/\[NAME\]/gi, componentName);
 
   fs.mkdirSync(componentPath);
   fs.writeFileSync(`${componentPath}/${componentName}.${componentJsExtension}`, jsxData);
