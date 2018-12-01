@@ -1,12 +1,12 @@
 {
   "reactComponentIndex": {
-    "body": "import [COMPONENT_NAME] from './[COMPONENT_NAME]';\n\nexport default [COMPONENT_NAME];"
+    "body": "import [NAME] from './[NAME]';\n\nexport default [NAME];"
   },
   "reactComponentCss": {
-    "body": ".[COMPONENT_NAME] {\n}"
+    "body": ".[NAME] {\n}"
   },
   "reactClassComponent": {
-    "body": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport styles from './[COMPONENT_NAME].[CSS_EXTENTION]';\n\nclass [COMPONENT_NAME] extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n    };\n  }\n  render() {\n    return (\n      <div className={styles.[COMPONENT_NAME]}>\n      </div>\n    );\n  }\n}\n\n[COMPONENT_NAME].propTypes = {\n};\n[COMPONENT_NAME].defaultProps = {\n};\n\nexport default [COMPONENT_NAME];"
+    "body": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport styles from './[NAME].[CSS_EXTENTION]';\n\nclass [NAME] extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n    };\n  }\n  render() {\n    return (\n      <div className={styles.[NAME]}>\n      </div>\n    );\n  }\n}\n\n[NAME].propTypes = {\n};\n[NAME].defaultProps = {\n};\n\nexport default [NAME];"
   },
   "reactFunctionComponent": {
     "body": ""
