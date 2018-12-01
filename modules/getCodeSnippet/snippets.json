@@ -1,0 +1,20 @@
+{
+  "reactComponentIndex": {
+    "body": "import [COMPONENT_NAME] from './[COMPONENT_NAME]';\n\nexport default [COMPONENT_NAME];"
+  },
+  "reactComponentCss": {
+    "body": ".[COMPONENT_NAME] {\n}"
+  },
+  "reactClassComponent": {
+    "body": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport styles from './[COMPONENT_NAME].[CSS_EXTENTION]';\n\nclass [COMPONENT_NAME] extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n    };\n  }\n  render() {\n    return (\n      <div className={styles.[COMPONENT_NAME]}>\n      </div>\n    );\n  }\n}\n\n[COMPONENT_NAME].propTypes = {\n};\n[COMPONENT_NAME].defaultProps = {\n};\n\nexport default [COMPONENT_NAME];"
+  },
+  "reactFunctionComponent": {
+    "body": ""
+  },
+  "reactHoc": {
+    "body": "import React from 'react'\nimport PropTypes from 'prop-types'\n\nconst [HOC_NAME] = WrappedComponent => {\n  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />;\n\n  hocComponent.propTypes = {};\n\n  return hocComponent;\n}\n\nexport { [HOC_NAME] };"
+  },
+  "reactHocIndex": {
+    "body": "import { [HOC_NAME] } from './toastify';\nexport { [HOC_NAME] };"
+  }
+}
