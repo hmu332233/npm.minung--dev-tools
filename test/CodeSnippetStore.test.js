@@ -25,4 +25,27 @@ describe('CodeSnippetStore', () => {
       expect(codeSnippetStore.validateType(existedValue)).toEqual(true);
     });
   });
+  describe('getOriginalSnippet, type에 해당하는 snippet 원본을 가져온다.', () => {
+    test('getOriginalSnippet() 호출시 에러', () => {
+      const codeSnippetStore = new CodeSnippetStore();
+      function execGetOriginalSnippet() {
+        codeSnippetStore.getOriginalSnippet();
+      }
+      expect(execGetOriginalSnippet).toThrowError('not validated type');
+    });
+    test('getOriginalSnippet("존재하지 않는 값") 호출시 에러', () => {
+      const codeSnippetStore = new CodeSnippetStore();
+      function execGetOriginalSnippet() {
+        const noneExistedValue = 'abc';
+        codeSnippetStore.getOriginalSnippet(noneExistedValue)
+      }
+      expect(execGetOriginalSnippet).toThrowError('not validated type');
+    });
+    test('getOriginalSnippet("존재하는 값") 호출시 올바른 값', () => {
+      const codeSnippetStore = new CodeSnippetStore();
+      const existedValue = codeSnippetStore.getList()[0];
+      const existedSnippet = codeSnippetStore.snippets[existedValue];
+      expect(codeSnippetStore.getOriginalSnippet(existedValue)).toEqual(existedSnippet);
+    });
+  });
 });

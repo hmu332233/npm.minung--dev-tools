@@ -15,18 +15,18 @@ class CodeSnippetStore {
 
   validateType(type) {
     if (!type) return false;
-    
     return this.getList().includes(type);
-  }  
+  }
 
-  get({ type, name, cssExtension = 'scss' } = {}) {
-    // const codeSnippet = snippets[type].body;
+  getOriginalSnippet(type) {
+    if (!this.validateType(type)) throw new Error('not validated type');
+    return this.snippets[type];
+  }
 
-    if (!codeSnippet) throw new Error('Cannot found snippet');
-    if (!name) throw new Error('No Name');
+  get({ type, name, cssExtension = 'scss'} = {}) {
+    const originalSnippet = this.getOriginalSnippet(type);
 
-    const result = codeSnippet.replace(/\[NAME\]/gi, name).replace(/\[CSS_EXTENTION\]/gi, cssExtension);
-    return result;
+    return null;
   }
 }
 
