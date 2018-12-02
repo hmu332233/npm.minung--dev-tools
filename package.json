@@ -2,7 +2,10 @@
   "name": "npm.minung--dev-tools",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/app.js",
+  "bin": {
+    "mu-dev": "bin/app.js"
+  },
   "scripts": {
     "test": "jest --config test/config.js"
   },
@@ -18,5 +21,8 @@
   "homepage": "https://github.com/hmu332233/npm.minung--dev-tools#readme",
   "devDependencies": {
     "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }

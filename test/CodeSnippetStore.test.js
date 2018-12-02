@@ -69,7 +69,9 @@ describe('CodeSnippetStore', () => {
     test('get, name이 없으면 에러', () => {
       const codeSnippetStore = new CodeSnippetStore();
       function execGet() {
-        const snippet = codeSnippetStore.get({});
+        const snippet = codeSnippetStore.get({
+          type: 'reactClassComponent'
+        });
       }
       expect(execGet).toThrowError('no name');
     });

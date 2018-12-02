@@ -32,12 +32,11 @@ class CodeSnippetStore {
   }
 
   get({ type, name, cssExtension = 'scss'} = {}) {
-    if (!name) throw new Error('no name');
-
     const originalSnippet = this.getOriginalSnippet(type);
     let snippet = originalSnippet;
 
     if (this.needReplaceName(originalSnippet)) {
+      if (!name) throw new Error('no name');
       snippet = snippet.replace(/\[NAME\]/gi, name);
     }
 
