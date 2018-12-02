@@ -1,6 +1,6 @@
 {
-  "name": "npm.minung--dev-tools",
-  "version": "1.0.0",
+  "name": "@hmu332233/minung--dev-tools",
+  "version": "0.1.0",
   "description": "",
   "main": "./lib/app.js",
   "bin": {
