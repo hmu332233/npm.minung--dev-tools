@@ -2,6 +2,7 @@
   "name": "@hmu332233/minung--dev-tools",
   "version": "0.1.0",
   "description": "",
+  "preferGlobal": true,
   "main": "./lib/app.js",
   "bin": {
     "mu-dev": "bin/app.js"
