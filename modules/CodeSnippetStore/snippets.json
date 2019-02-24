@@ -16,5 +16,11 @@
   },
   "reactHocIndex": {
     "body": "import { [HOC_NAME] } from './toastify';\nexport { [HOC_NAME] };"
+  },
+  "mongooseSchema ": {
+    "body": "const fields = {\n};\n\nconst constants = {\n};\n\nconst schema = new g_schema(fields);\n\nconst db = {\n\t[NAME_CAMEL]: g_mongoose.model('[NAME_PASCAL]', schema)\n};\n\nmodule.exports = {\n\tgetDB: () => db,\n\tgetFields: () => fields,\n\tgetConstants: () => constants\n};"
+  },
+  "mongooseModel ": {
+    "body": "const [NAME_CAMEL]Model = require(__path + 'models/[NAME_CAMEL]Info.js');\nconst db = [NAME_CAMEL]Model.getDB();\nconst constants = [NAME_CAMEL]Model.getConstants();\n\nconst mod[NAME_CAMEL] = {\n\tCONSTANTS: constants,\n}\n\nmodule.exports = mod[NAME_CAMEL];"
   }
 }
