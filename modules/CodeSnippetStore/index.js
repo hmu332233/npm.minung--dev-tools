@@ -3,8 +3,8 @@ const snippets = require('./snippets.json');
 class CodeSnippetStore {
   constructor() {
     // static
-    this.NAME_KEY = '[NAME]';
-    this.CSS_EXTENSION_KEY = '[CSS_EXTENTION]';
+    this.NAME_KEY = 'NAME';
+    this.CSS_EXTENSION_KEY = 'CSS_EXTENTION';
 
     this.snippets = snippets;
   }
@@ -23,25 +23,42 @@ class CodeSnippetStore {
     return this.snippets[type].body;
   }
 
+  needReplace(snippet, key) {
+    return snippet.includes(`[${key}]`);
+  }
+
   needReplaceName(snippet) {
-    return snippet.includes(this.NAME_KEY);
+    return this.needReplace(snippet, this.NAME_KEY);
   }
 
   needReplaceCssExtension(snippet) {
-    return snippet.includes(this.CSS_EXTENSION_KEY);
+    return this.needReplace(snippet, this.CSS_EXTENSION_KEY);
   }
 
-  get({ type, name, cssExtension = 'scss'} = {}) {
+  get({ type, name, cssExtension = 'scss' } = {}) {
+    if (!name) throw new Error('no name');
+
+    const replace = [{
+      key: 'NAME',
+      value: name
+    }, {
+      key: 'CSS_EXTENTION',
+      value: cssExtension
+    }];
+
+    const snippet = this.get2({ type, replace });
+    return snippet;
+  }
+
+  get2({ type, replace }) {
     const originalSnippet = this.getOriginalSnippet(type);
     let snippet = originalSnippet;
 
-    if (this.needReplaceName(originalSnippet)) {
-      if (!name) throw new Error('no name');
-      snippet = snippet.replace(/\[NAME\]/gi, name);
-    }
+    for (let { key, value } of replace) {
+      if (!this.needReplace(originalSnippet, key)) continue;
 
-    if (this.needReplaceCssExtension(originalSnippet)) {
-      snippet = snippet.replace(/\[CSS_EXTENTION\]/gi, cssExtension);
+      const regex = new RegExp(`\\[${key}\\]`, 'gi');
+      snippet = snippet.replace(regex, value);
     }
 
     return snippet;

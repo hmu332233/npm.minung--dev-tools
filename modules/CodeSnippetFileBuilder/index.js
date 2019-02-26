@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { fromCamelCase } = require('../Utils');
 const CodeSnippetStore = require('../CodeSnippetStore');
 
 class CodeSnippetFileBuilder {
@@ -28,6 +29,23 @@ class CodeSnippetFileBuilder {
     fs.writeFileSync(`${componentPath}/${componentName}.${componentJsExtension}`, jsxData);
     fs.writeFileSync(`${componentPath}/${componentName}.${componentCssExtension}`, cssData);
     fs.writeFileSync(`${componentPath}/index.js`, indexData);
+  }
+
+  makeMongooseModel({ name, path }) {
+    const camelCaseName = name;
+    const pascalCaseName = fromCamelCase(name);
+
+    const shemaData = this.codeSnippetStore.get({
+      type: 'mongooseSchema',
+      name: componentName,
+      cssExtension: componentCssExtension
+    });
+
+    const modelData = this.codeSnippetStore.get({
+      type: 'mongooseModel',
+      name: componentName,
+      cssExtension: componentCssExtension
+    });
   }
 }
 
