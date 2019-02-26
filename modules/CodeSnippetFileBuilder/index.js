@@ -6,7 +6,7 @@ class CodeSnippetFileBuilder {
     this.codeSnippetStore = new CodeSnippetStore();
   }
 
-  make({ componentName = 'Component', componentPath = './', componentType = 'class', componentJsExtension = 'jsx', componentCssExtension = 'scss' } = {}) {
+  makeReactComponent({ componentName = 'Component', componentPath = './', componentType = 'class', componentJsExtension = 'jsx', componentCssExtension = 'scss' } = {}) {
     componentPath += `/${componentName}`;
   
     const jsxData = this.codeSnippetStore.get({
