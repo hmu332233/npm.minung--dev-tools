@@ -35,7 +35,7 @@ class CodeSnippetStore {
     return this.needReplace(snippet, this.CSS_EXTENSION_KEY);
   }
 
-  get({ type, name, cssExtension = 'scss' } = {}) {
+  getReact({ type, name, cssExtension = 'scss' } = {}) {
     if (!name) throw new Error('no name');
 
     const replace = [{
@@ -46,11 +46,11 @@ class CodeSnippetStore {
       value: cssExtension
     }];
 
-    const snippet = this.get2({ type, replace });
+    const snippet = this.get({ type, replace });
     return snippet;
   }
 
-  get2({ type, replace }) {
+  get({ type, replace }) {
     const originalSnippet = this.getOriginalSnippet(type);
     let snippet = originalSnippet;
 

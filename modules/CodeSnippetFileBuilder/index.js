@@ -10,17 +10,17 @@ class CodeSnippetFileBuilder {
   makeReactComponent({ componentName = 'Component', componentPath = './', componentType = 'class', componentJsExtension = 'jsx', componentCssExtension = 'scss' } = {}) {
     componentPath += `/${componentName}`;
   
-    const jsxData = this.codeSnippetStore.get({
+    const jsxData = this.codeSnippetStore.getReact({
       type: 'reactClassComponent',
       name: componentName,
       cssExtension: componentCssExtension
     });
-    const cssData = this.codeSnippetStore.get({
+    const cssData = this.codeSnippetStore.getReact({
       type: 'reactComponentCss',
       name: componentName,
       cssExtension: componentCssExtension
     });
-    const indexData = this.codeSnippetStore.get({
+    const indexData = this.codeSnippetStore.getReact({
       type: 'reactComponentIndex',
       name: componentName
     });
@@ -37,15 +37,25 @@ class CodeSnippetFileBuilder {
 
     const shemaData = this.codeSnippetStore.get({
       type: 'mongooseSchema',
-      name: componentName,
-      cssExtension: componentCssExtension
+      replace: [{
+        key: 'NAME_CAMEL',
+        value: camelCaseName
+      }, {
+        key: 'NAME_PASCAL',
+        value: pascalCaseName
+      }]
     });
 
     const modelData = this.codeSnippetStore.get({
       type: 'mongooseModel',
-      name: componentName,
-      cssExtension: componentCssExtension
+      replace: [{
+        key: 'NAME_CAMEL',
+        value: camelCaseName
+      }]
     });
+
+    fs.writeFileSync(`${path}/${camelCaseName}.js`, modelData);
+    fs.writeFileSync(`${path}/${camelCaseName}Info.js`, shemaData);
   }
 }
 

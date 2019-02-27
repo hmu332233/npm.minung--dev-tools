@@ -69,7 +69,7 @@ describe('CodeSnippetStore', () => {
     test('get, name이 없으면 에러', () => {
       const codeSnippetStore = new CodeSnippetStore();
       function execGet() {
-        const snippet = codeSnippetStore.get({
+        const snippet = codeSnippetStore.getReact({
           type: 'reactClassComponent'
         });
       }
@@ -78,7 +78,7 @@ describe('CodeSnippetStore', () => {
     test('get, type이 없거나 이상하면 에러', () => {
       const codeSnippetStore = new CodeSnippetStore();
       function execGet() {
-        const snippet = codeSnippetStore.get({
+        const snippet = codeSnippetStore.getReact({
           name: 'TEST',
         });
       }
@@ -87,7 +87,7 @@ describe('CodeSnippetStore', () => {
     test('get, type과 name이 제대로 있으면 해당 값을 replace (css는 scss로)', () => {
       const codeSnippetStore = new CodeSnippetStore();
       const name = 'TestComponent';
-      const snippet = codeSnippetStore.get({
+      const snippet = codeSnippetStore.getReact({
         name,
         type: 'reactClassComponent'
       });
@@ -98,7 +98,7 @@ describe('CodeSnippetStore', () => {
     test('get, type과 name이 제대로 있고 cssExtension이 있으면 해당 값을 replace', () => {
       const codeSnippetStore = new CodeSnippetStore();
       const name = 'TestComponent';
-      const snippet = codeSnippetStore.get({
+      const snippet = codeSnippetStore.getReact({
         name,
         type: 'reactClassComponent',
         cssExtension: 'css'
