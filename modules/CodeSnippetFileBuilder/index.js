@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { fromCamelCase } = require('../Utils');
+const { fromCamelCase, uncapitalize } = require('../Utils');
 const CodeSnippetStore = require('../CodeSnippetStore');
 
 class CodeSnippetFileBuilder {
@@ -34,14 +34,15 @@ class CodeSnippetFileBuilder {
   makeMongooseModel({ name, path }) {
     const camelCaseName = name;
     const pascalCaseName = fromCamelCase(name);
+    const uncapitalizedCamelCaseName = uncapitalize(camelCaseName);
 
     const shemaData = this.codeSnippetStore.get({
       type: 'mongooseSchema',
       replace: [{
-        key: 'NAME_CAMEL',
-        value: camelCaseName
+        key: 'MODEL_NAME',
+        value: uncapitalizedCamelCaseName
       }, {
-        key: 'NAME_PASCAL',
+        key: 'COLLECTION_NAME',
         value: pascalCaseName
       }]
     });
@@ -49,13 +50,16 @@ class CodeSnippetFileBuilder {
     const modelData = this.codeSnippetStore.get({
       type: 'mongooseModel',
       replace: [{
+        key: 'MODEL_NAME',
+        value: uncapitalizedCamelCaseName
+      },{
         key: 'NAME_CAMEL',
         value: camelCaseName
       }]
     });
 
-    fs.writeFileSync(`${path}/${camelCaseName}.js`, modelData);
-    fs.writeFileSync(`${path}/${camelCaseName}Info.js`, shemaData);
+    fs.writeFileSync(`${path}/${uncapitalizedCamelCaseName}.js`, modelData);
+    fs.writeFileSync(`${path}/${uncapitalizedCamelCaseName}Info.js`, shemaData);
   }
 }
 

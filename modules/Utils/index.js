@@ -8,7 +8,12 @@ const fromCamelCase = (str, separator = '_') => {
   return str.replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2').replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2').toLowerCase();
 }
 
+const uncapitalize = str => {
+  return str.charAt(0).toLowerCase() + str.slice(1) 
+}
+
 module.exports = {
   toCamelCase,
-  fromCamelCase
+  fromCamelCase,
+  uncapitalize
 };

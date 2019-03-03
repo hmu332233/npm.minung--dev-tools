@@ -17,10 +17,10 @@
   "reactHocIndex": {
     "body": "import { [HOC_NAME] } from './toastify';\nexport { [HOC_NAME] };"
   },
-  "mongooseSchema ": {
-    "body": "const fields = {\n};\n\nconst constants = {\n};\n\nconst schema = new g_schema(fields);\n\nconst db = {\n\t[NAME_CAMEL]: g_mongoose.model('[NAME_PASCAL]', schema)\n};\n\nmodule.exports = {\n\tgetDB: () => db,\n\tgetFields: () => fields,\n\tgetConstants: () => constants\n};"
+  "mongooseSchema": {
+    "body": "const fields = {\n};\n\nconst constants = {\n};\n\nconst schema = new g_schema(fields);\n\nconst db = {\n\t[MODEL_NAME]: g_mongoose.model('[COLLECTION_NAME]', schema)\n};\n\nmodule.exports = {\n\tgetDB: () => db,\n\tgetFields: () => fields,\n\tgetConstants: () => constants\n};"
   },
-  "mongooseModel ": {
-    "body": "const [NAME_CAMEL]Model = require(__path + 'models/[NAME_CAMEL]Info.js');\nconst db = [NAME_CAMEL]Model.getDB();\nconst constants = [NAME_CAMEL]Model.getConstants();\n\nconst mod[NAME_CAMEL] = {\n\tCONSTANTS: constants,\n}\n\nmodule.exports = mod[NAME_CAMEL];"
+  "mongooseModel": {
+    "body": "const [MODEL_NAME]Model = require(__path + 'models/[MODEL_NAME]Info.js');\nconst db = [MODEL_NAME]Model.getDB();\nconst constants = [MODEL_NAME]Model.getConstants();\n\nconst mod[NAME_CAMEL] = {\n\tCONSTANTS: constants,\n}\n\nmodule.exports = mod[NAME_CAMEL];"
   }
 }
