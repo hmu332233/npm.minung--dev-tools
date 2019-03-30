@@ -9,7 +9,7 @@
     "body": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport styles from './[NAME].[CSS_EXTENTION]';\n\nclass [NAME] extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n    };\n  }\n  render() {\n    return (\n      <div className={styles.[NAME]}>\n      </div>\n    );\n  }\n}\n\n[NAME].propTypes = {\n};\n[NAME].defaultProps = {\n};\n\nexport default [NAME];"
   },
   "reactFunctionComponent": {
-    "body": ""
+    "body": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport styles from './[NAME].[CSS_EXTENTION]';\n\nfunction [NAME](props) {\n  return (\n    <div className={styles.[NAME]}>\n    </div>\n  );\n}\n\n[NAME].propTypes = {\n};\n[NAME].defaultProps = {\n};\n\nexport default [NAME];"
   },
   "reactHoc": {
     "body": "import React from 'react'\nimport PropTypes from 'prop-types'\n\nconst [HOC_NAME] = WrappedComponent => {\n  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />;\n\n  hocComponent.propTypes = {};\n\n  return hocComponent;\n}\n\nexport { [HOC_NAME] };"
