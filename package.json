@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/hmu332233/npm.minung--dev-tools#readme",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^26.0.1"
   },
   "dependencies": {
-    "commander": "^2.19.0"
+    "commander": "^5.1.0"
   }
 }
