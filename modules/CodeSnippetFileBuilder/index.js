@@ -12,19 +12,32 @@ class CodeSnippetFileBuilder {
   
     const isClassType = componentType === 'class';
     
-    const jsxData = this.codeSnippetStore.getReact({
+    const jsxData = this.codeSnippetStore.get({
       type: isClassType ? 'reactClassComponent' : 'reactFunctionComponent',
-      name: componentName,
-      cssExtension: componentCssExtension
+      replace: [{ 
+        key: 'NAME',
+        value: componentName,
+      }, {
+        key: 'CSS_EXTENTION',
+        value: componentCssExtension,
+      }],
     });
-    const cssData = this.codeSnippetStore.getReact({
+    const cssData = this.codeSnippetStore.get({
       type: 'reactComponentCss',
-      name: componentName,
-      cssExtension: componentCssExtension
+      replace: [{ 
+        key: 'NAME',
+        value: componentName,
+      }, {
+        key: 'CSS_EXTENTION',
+        value: componentCssExtension,
+      }],
     });
-    const indexData = this.codeSnippetStore.getReact({
+    const indexData = this.codeSnippetStore.get({
       type: 'reactComponentIndex',
-      name: componentName
+      replace: [{ 
+        key: 'NAME',
+        value: componentName,
+      }],
     });
   
     fs.mkdirSync(componentPath);
