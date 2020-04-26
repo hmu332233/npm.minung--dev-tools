@@ -7,16 +7,21 @@ class CodeSnippetFileBuilder {
     this.codeSnippetStore = new CodeSnippetStore();
   }
 
-  makeReactComponent({ componentName = 'Component', componentPath = './', componentType = 'function', componentJsExtension = 'jsx', componentCssExtension = 'scss' } = {}) {
+  makeReactComponent({ componentName = 'Component', componentPath = './', componentType = 'function', componentJsExtension = 'jsx', componentCssExtension = 'scss', indexComponent } = {}) {
     componentPath += `/${componentName}`;
   
     const isClassType = componentType === 'class';
+    const componentFileName = indexComponent ? 'index' : componentName;
+    const cssFileName = indexComponent ? 'styles' : componentName;
     
     const jsxData = this.codeSnippetStore.get({
       type: isClassType ? 'reactClassComponent' : 'reactFunctionComponent',
       replace: [{ 
         key: 'NAME',
         value: componentName,
+      }, {
+        key: 'CSS_FILE_NAME',
+        value: cssFileName,
       }, {
         key: 'CSS_EXTENTION',
         value: componentCssExtension,
@@ -27,9 +32,6 @@ class CodeSnippetFileBuilder {
       replace: [{ 
         key: 'NAME',
         value: componentName,
-      }, {
-        key: 'CSS_EXTENTION',
-        value: componentCssExtension,
       }],
     });
     const indexData = this.codeSnippetStore.get({
@@ -41,9 +43,13 @@ class CodeSnippetFileBuilder {
     });
   
     fs.mkdirSync(componentPath);
-    fs.writeFileSync(`${componentPath}/${componentName}.${componentJsExtension}`, jsxData);
-    fs.writeFileSync(`${componentPath}/${componentName}.${componentCssExtension}`, cssData);
-    fs.writeFileSync(`${componentPath}/index.js`, indexData);
+
+    fs.writeFileSync(`${componentPath}/${componentFileName}.${componentJsExtension}`, jsxData);
+    fs.writeFileSync(`${componentPath}/${cssFileName}.${componentCssExtension}`, cssData);
+
+    if (!indexComponent) {
+      fs.writeFileSync(`${componentPath}/index.js`, indexData);
+    }
   }
 
   makeMongooseModel({ name, path }) {
