@@ -27,6 +27,7 @@ class CodeSnippetFileBuilder {
         value: componentCssExtension,
       }],
     });
+
     const cssData = this.codeSnippetStore.get({
       type: 'reactComponentCss',
       replace: [{ 
@@ -34,6 +35,7 @@ class CodeSnippetFileBuilder {
         value: componentName,
       }],
     });
+    
     const indexData = this.codeSnippetStore.get({
       type: 'reactComponentIndex',
       replace: [{ 
@@ -43,7 +45,6 @@ class CodeSnippetFileBuilder {
     });
   
     fs.mkdirSync(componentPath);
-
     fs.writeFileSync(`${componentPath}/${componentFileName}.${componentJsExtension}`, jsxData);
     fs.writeFileSync(`${componentPath}/${cssFileName}.${componentCssExtension}`, cssData);
 

@@ -1,6 +1,6 @@
 {
   "name": "@hmu332233/minung--dev-tools",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "preferGlobal": true,
   "main": "./lib/app.js",
